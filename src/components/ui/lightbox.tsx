@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { IMG_BASE } from '@/lib/utils'
 
 export interface LightboxImage {
   name: string
@@ -96,7 +97,7 @@ export function Lightbox({ images, index, onClose, onNavigate }: LightboxProps) 
   }
 
   const srcSet = image.widths
-    .map((w) => `/img/${image.name}-${w}.webp ${w}w`)
+    .map((w) => `${IMG_BASE}${image.name}-${w}.webp ${w}w`)
     .join(', ')
 
   return (
@@ -115,7 +116,7 @@ export function Lightbox({ images, index, onClose, onNavigate }: LightboxProps) 
         className="relative flex max-h-full max-w-4xl items-center justify-center outline-none"
       >
         <img
-          src={`/img/${image.name}-${image.widths[image.widths.length - 1]}.webp`}
+          src={`${IMG_BASE}${image.name}-${image.widths[image.widths.length - 1]}.webp`}
           srcSet={srcSet}
           sizes="90vw"
           width={image.width}

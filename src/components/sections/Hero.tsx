@@ -1,8 +1,9 @@
 import { forwardRef } from 'react'
 import { AnimatedHero } from '@/components/ui/animated-hero-section-1'
+import { IMG_BASE } from '@/lib/utils'
 
 const HERO_SRCSET = [640, 960, 1280, 1600, 1920, 2048]
-  .map((w) => `/img/hero-${w}.webp ${w}w`)
+  .map((w) => `${IMG_BASE}hero-${w}.webp ${w}w`)
   .join(', ')
 
 export const Hero = forwardRef<HTMLDivElement>((_props, ref) => {
@@ -10,7 +11,7 @@ export const Hero = forwardRef<HTMLDivElement>((_props, ref) => {
     <AnimatedHero
       ref={ref}
       image={{
-        src: '/img/hero-1920.webp',
+        src: `${IMG_BASE}hero-1920.webp`,
         srcSet: HERO_SRCSET,
         sizes: '100vw',
         width: 2048,

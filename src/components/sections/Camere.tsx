@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { useSectionMotion, useStaggerMotion } from '@/lib/motion'
+import { IMG_BASE } from '@/lib/utils'
 
 interface RoomPhoto {
   name: string
@@ -47,11 +48,11 @@ const rooms: RoomCardData[] = [
 
 function RoomPhotoImg({ photo }: { photo: RoomPhoto }) {
   const srcSet = [480, 800, 1200]
-    .map((w) => `/img/${photo.name}-${w}.webp ${w}w`)
+    .map((w) => `${IMG_BASE}${photo.name}-${w}.webp ${w}w`)
     .join(', ')
   return (
     <img
-      src={`/img/${photo.name}-800.webp`}
+      src={`${IMG_BASE}${photo.name}-800.webp`}
       srcSet={srcSet}
       sizes="(min-width: 768px) 33vw, 100vw"
       width={photo.width}

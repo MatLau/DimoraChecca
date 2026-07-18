@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { ArrowUpRight } from 'lucide-react'
 import { TextParallaxContent } from '@/components/ui/text-parallax-content-scroll'
 import { Button } from '@/components/ui/button'
+import { IMG_BASE } from '@/lib/utils'
 
 const WIDTHS = [480, 800, 1280, 1600]
 
@@ -73,12 +74,12 @@ export function Atmosfera() {
     <div className="bg-bianco-calce">
       {panels.map((panel) => {
         const srcSet = WIDTHS.map(
-          (w) => `/img/${panel.name}-${w}.webp ${w}w`,
+          (w) => `${IMG_BASE}${panel.name}-${w}.webp ${w}w`,
         ).join(', ')
         return (
           <TextParallaxContent
             key={panel.name}
-            imgSrc={`/img/${panel.name}-${WIDTHS[1]}.webp`}
+            imgSrc={`${IMG_BASE}${panel.name}-${WIDTHS[1]}.webp`}
             imgSrcSet={srcSet}
             imgAlt={panel.alt}
             subheading={panel.subheading}

@@ -1,6 +1,7 @@
 import { ArrowUpRight } from 'lucide-react'
 import { TextParallaxContent } from '@/components/ui/text-parallax-content-scroll'
 import { Button } from '@/components/ui/button'
+import { IMG_BASE } from '@/lib/utils'
 
 const IMG_WIDTHS = [480, 800, 1200, 1448]
 const IMG_NAME = 'intro-soggiorno'
@@ -12,14 +13,14 @@ const stats = [
 ]
 
 export function Intro() {
-  const srcSet = IMG_WIDTHS.map((w) => `/img/${IMG_NAME}-${w}.webp ${w}w`).join(
+  const srcSet = IMG_WIDTHS.map((w) => `${IMG_BASE}${IMG_NAME}-${w}.webp ${w}w`).join(
     ', ',
   )
 
   return (
     <div id="la-dimora" className="scroll-mt-8 bg-bianco-calce pt-32 md:pt-40">
       <TextParallaxContent
-        imgSrc={`/img/${IMG_NAME}-800.webp`}
+        imgSrc={`${IMG_BASE}${IMG_NAME}-800.webp`}
         imgSrcSet={srcSet}
         imgAlt="Soggiorno accogliente con divano, vecchia TV e piante di ulivo e agrumi, illuminato dalla luce calda del tramonto"
         subheading="Il benvenuto"

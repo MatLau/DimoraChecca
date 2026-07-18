@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Lightbox, type LightboxImage } from '@/components/ui/lightbox'
 import { useSectionMotion, useStaggerMotion } from '@/lib/motion'
+import { IMG_BASE } from '@/lib/utils'
 
 const WIDE_WIDTHS = [480, 800, 1280, 1600]
 const TALL_WIDTHS = [400, 600, 900, 1200]
@@ -97,7 +98,7 @@ function Thumb({
 }) {
   const { item } = useStaggerMotion()
   const srcSet = image.widths
-    .map((w) => `/img/${image.name}-${w}.webp ${w}w`)
+    .map((w) => `${IMG_BASE}${image.name}-${w}.webp ${w}w`)
     .join(', ')
   return (
     <motion.button
@@ -108,7 +109,7 @@ function Thumb({
       className={`${ratioClass} group block w-full cursor-pointer overflow-hidden focus-visible:outline focus-visible:outline-2 focus-visible:outline-terracotta`}
     >
       <img
-        src={`/img/${image.name}-${image.widths[1]}.webp`}
+        src={`${IMG_BASE}${image.name}-${image.widths[1]}.webp`}
         srcSet={srcSet}
         sizes={
           ratioClass.includes('4/5')

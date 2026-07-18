@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { useSectionMotion } from '@/lib/motion'
+import { IMG_BASE } from '@/lib/utils'
 
 const WIDTHS = [480, 800, 1280, 1600]
 const IMG_NAME = 'gallery-terrazza2'
@@ -16,7 +17,7 @@ const infoItems = [
 
 export function Prenota() {
   const enter = useSectionMotion()
-  const srcSet = WIDTHS.map((w) => `/img/${IMG_NAME}-${w}.webp ${w}w`).join(
+  const srcSet = WIDTHS.map((w) => `${IMG_BASE}${IMG_NAME}-${w}.webp ${w}w`).join(
     ', ',
   )
 
@@ -26,7 +27,7 @@ export function Prenota() {
       className="relative scroll-mt-20 overflow-hidden py-28 md:py-36"
     >
       <img
-        src={`/img/${IMG_NAME}-1280.webp`}
+        src={`${IMG_BASE}${IMG_NAME}-1280.webp`}
         srcSet={srcSet}
         sizes="100vw"
         loading="lazy"
