@@ -100,6 +100,16 @@ export function Intro() {
       >
         <div className="mx-auto grid max-w-6xl grid-cols-1 gap-12 px-6 pb-28 pt-12 md:grid-cols-2 md:items-center md:gap-16 lg:px-10">
           <div>
+            <img
+              src={`${IMG_BASE}logo-359.webp`}
+              srcSet={`${IMG_BASE}logo-200.webp 200w, ${IMG_BASE}logo-359.webp 359w`}
+              sizes="200px"
+              width={359}
+              height={400}
+              loading="lazy"
+              alt="Logo di Dimora Checca: illustrazione con bulldog francese e la scritta Dimora Checca"
+              className="mb-8 w-[180px] md:w-[200px]"
+            />
             <p className="text-lg leading-relaxed text-grafite/80 md:text-xl">
               Il luogo ideale per trascorrere una vacanza all'insegna del
               comfort, del relax e della tranquillità. La struttura dispone di 4
