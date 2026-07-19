@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import { useSectionMotion, useStaggerMotion } from '@/lib/motion'
 import { IMG_BASE } from '@/lib/utils'
 
@@ -59,7 +59,7 @@ function RoomPhotoImg({ photo }: { photo: RoomPhoto }) {
       height={photo.height}
       loading="lazy"
       alt={photo.alt}
-      className="h-full w-full object-cover"
+      className="h-full w-full object-cover transition-transform duration-[400ms] ease-out motion-safe:group-hover:scale-105"
     />
   )
 }
@@ -92,15 +92,22 @@ function LunaPlaceholder() {
 
 function RoomCard({ room }: { room: RoomCardData }) {
   const { item } = useStaggerMotion()
+  const reduce = useReducedMotion()
   return (
-    <motion.div variants={item} className="flex flex-col">
-      <div className="aspect-[4/5] w-full overflow-hidden bg-bianco-calce">
+    <motion.div
+      variants={item}
+      whileHover={reduce ? undefined : { y: -8 }}
+      transition={{ duration: 0.3, ease: 'easeOut' }}
+      className="group flex flex-col"
+    >
+      <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl bg-bianco-calce shadow-sm transition-shadow duration-300 group-hover:shadow-lg">
+        <span className="absolute left-4 top-4 z-10 rounded-full bg-grafite/60 px-3 py-1.5 text-xs uppercase tracking-widest text-bianco-calce backdrop-blur-sm">
+          {room.tipo}
+        </span>
         {room.photo ? <RoomPhotoImg photo={room.photo} /> : <LunaPlaceholder />}
       </div>
       <h3 className="mt-5 font-display text-2xl text-grafite">{room.nome}</h3>
-      <p className="mt-1 text-sm text-grafite/70">
-        {room.tipo} · {room.bagno}
-      </p>
+      <p className="mt-1 text-sm text-grafite/70">{room.bagno}</p>
     </motion.div>
   )
 }

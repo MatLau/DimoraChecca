@@ -13,6 +13,7 @@ interface Panel {
   heading: string
   paragraph: string
   cta: { text: string; to: string }
+  parallax?: boolean
 }
 
 const panels: Panel[] = [
@@ -24,6 +25,7 @@ const panels: Panel[] = [
     paragraph:
       "Coperta, arredata con divanetti e tavoli, affacciata sull'uliveto e sulle montagne di Corigliano Rossano. È lo spazio dove passa la maggior parte della giornata chi soggiorna da noi.",
     cta: { text: 'Vedi le camere', to: '#camere' },
+    parallax: true,
   },
   {
     name: 'gallery-salone',
@@ -42,6 +44,7 @@ const panels: Panel[] = [
     paragraph:
       "Ogni camera ha il proprio cartello, dipinto a mano e appeso all'ingresso. Sono il primo dettaglio che si nota entrando, e il più personale di tutta la casa.",
     cta: { text: 'Come raggiungerci', to: '#come-raggiungerci' },
+    parallax: true,
   },
 ]
 
@@ -84,6 +87,7 @@ export function Atmosfera() {
             imgAlt={panel.alt}
             subheading={panel.subheading}
             heading={panel.heading}
+            parallax={panel.parallax}
           >
             <PanelContent panel={panel} />
           </TextParallaxContent>

@@ -1,5 +1,11 @@
-import { useRef, type ReactNode } from 'react'
-import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion'
+import { useRef, type ReactNode, type RefObject } from 'react'
+import {
+  motion,
+  useInView,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+} from 'framer-motion'
 
 const IMG_PADDING = 12
 
@@ -11,6 +17,8 @@ interface TextParallaxContentProps {
   heading: string
   /** Small rotated note card floating on a corner of the sticky image, e.g. a quote. */
   badge?: string
+  /** Slow y-parallax on the background image while the band crosses the viewport. */
+  parallax?: boolean
   children?: ReactNode
 }
 
@@ -21,12 +29,21 @@ export function TextParallaxContent({
   subheading,
   heading,
   badge,
+  parallax = false,
   children,
 }: TextParallaxContentProps) {
+  const containerRef = useRef<HTMLDivElement>(null)
   return (
     <div style={{ paddingLeft: IMG_PADDING, paddingRight: IMG_PADDING }}>
-      <div className="relative h-[150vh]">
-        <StickyImage src={imgSrc} srcSet={imgSrcSet} alt={imgAlt} badge={badge} />
+      <div ref={containerRef} className="relative h-[150vh]">
+        <StickyImage
+          src={imgSrc}
+          srcSet={imgSrcSet}
+          alt={imgAlt}
+          badge={badge}
+          parallax={parallax}
+          containerRef={containerRef}
+        />
         <OverlayCopy heading={heading} subheading={subheading} />
       </div>
       {children}
@@ -39,14 +56,19 @@ function StickyImage({
   srcSet,
   alt,
   badge,
+  parallax,
+  containerRef,
 }: {
   src: string
   srcSet?: string
   alt: string
   badge?: string
+  parallax: boolean
+  containerRef: RefObject<HTMLDivElement | null>
 }) {
   const reduce = useReducedMotion()
   const targetRef = useRef<HTMLDivElement>(null)
+  const inView = useInView(targetRef)
   const { scrollYProgress } = useScroll({
     target: targetRef,
     offset: ['end end', 'end start'],
@@ -54,6 +76,15 @@ function StickyImage({
 
   const scale = useTransform(scrollYProgress, [0, 1], [1, 0.85])
   const scrimOpacity = useTransform(scrollYProgress, [0, 1], [1, 0])
+
+  // Parallasse lento dell'immagine sull'intera corsa della fascia. L'immagine
+  // è scalata 1.15 così i ±40px di corsa non scoprono mai i bordi.
+  const { scrollYProgress: bandProgress } = useScroll({
+    target: containerRef,
+    offset: ['start end', 'end start'],
+  })
+  const imgY = useTransform(bandProgress, [0, 1], [-40, 40])
+  const parallaxOn = parallax && !reduce
 
   return (
     <motion.div
@@ -65,12 +96,17 @@ function StickyImage({
       }}
       className="sticky z-0 overflow-hidden rounded-3xl"
     >
-      <img
+      <motion.img
         src={src}
         srcSet={srcSet}
         sizes="100vw"
         loading="lazy"
         alt={alt}
+        style={{
+          y: parallaxOn ? imgY : 0,
+          scale: parallaxOn ? 1.15 : 1,
+          willChange: parallaxOn && inView ? 'transform' : 'auto',
+        }}
         className="absolute inset-0 h-full w-full object-cover"
       />
       <motion.div

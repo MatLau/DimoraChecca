@@ -29,3 +29,47 @@ body {
   outline: 2px solid var(--color-terracotta);
   outline-offset: 2px;
 }
+
+/* Galleria a marquee. Il track contiene DUE copie della sequenza e trasla di
+   -50% (= una copia esatta: ogni copia porta un pr uguale al gap interno,
+   quindi il punto di riavvolgimento è invisibile). La fila inversa riusa gli
+   stessi keyframes con animation-direction: reverse. overflow-x: clip (non
+   hidden) perché il focus da tastiera non può scrollare un contenitore clip,
+   e quindi non manda fuori sincrono il transform del track. */
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-row {
+  overflow-x: clip;
+}
+
+.marquee-track {
+  animation: marquee-scroll linear infinite;
+}
+
+.marquee-track[data-direction='right'] {
+  animation-direction: reverse;
+}
+
+.marquee-row:hover .marquee-track,
+.marquee-row:focus-within .marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+  .marquee-row {
+    overflow-x: auto;
+  }
+  [data-marquee-dupe] {
+    display: none;
+  }
+}
