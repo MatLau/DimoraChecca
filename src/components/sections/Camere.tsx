@@ -32,6 +32,12 @@ const rooms: RoomCardData[] = [
     nome: 'Luna',
     tipo: 'Matrimoniale',
     bagno: 'Bagno privato',
+    photo: {
+      name: 'card-luna',
+      width: 800,
+      height: 1000,
+      alt: 'Targa dipinta a mano della camera Luna',
+    },
   },
   {
     nome: 'Tramonto',
@@ -64,32 +70,6 @@ function RoomPhotoImg({ photo }: { photo: RoomPhoto }) {
   )
 }
 
-function LunaPlaceholder() {
-  return (
-    <div
-      className="flex h-full w-full flex-col items-center justify-center gap-4 bg-bianco-calce"
-      role="img"
-      aria-label="Foto della targa Camera Luna non ancora disponibile"
-    >
-      <svg
-        width="72"
-        height="72"
-        viewBox="0 0 72 72"
-        fill="none"
-        aria-hidden="true"
-      >
-        <path
-          d="M45 12a24 24 0 1 0 15 22.2A18.5 18.5 0 0 1 45 12Z"
-          stroke="var(--color-blu-brezza)"
-          strokeWidth="2"
-          strokeLinejoin="round"
-        />
-      </svg>
-      <span className="font-display text-lg text-grafite/70">Camera Luna</span>
-    </div>
-  )
-}
-
 function RoomCard({ room }: { room: RoomCardData }) {
   const { item } = useStaggerMotion()
   const reduce = useReducedMotion()
@@ -104,7 +84,7 @@ function RoomCard({ room }: { room: RoomCardData }) {
         <span className="absolute left-4 top-4 z-10 rounded-full bg-grafite/60 px-3 py-1.5 text-xs uppercase tracking-widest text-bianco-calce backdrop-blur-sm">
           {room.tipo}
         </span>
-        {room.photo ? <RoomPhotoImg photo={room.photo} /> : <LunaPlaceholder />}
+        {room.photo && <RoomPhotoImg photo={room.photo} />}
       </div>
       <h3 className="mt-5 font-display text-2xl text-grafite">{room.nome}</h3>
       <p className="mt-1 text-sm text-grafite/70">{room.bagno}</p>
