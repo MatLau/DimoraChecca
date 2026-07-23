@@ -29,18 +29,35 @@ export function Raggiungerci() {
         <p className="mt-4 text-lg text-grafite/80">
           C/DA Frasso, 84 — 87064 Corigliano Rossano (CS)
         </p>
-        <p className="mt-1 text-grafite/70">Coordinate: [DA COMPLETARE]</p>
 
-        <div className="mt-8 flex h-80 w-full items-center justify-center rounded-md bg-bianco-calce text-center text-grafite/70 md:h-96">
-          <p className="max-w-xs">
-            Mappa non disponibile: mancano le coordinate GPS della struttura.
-            <br />
-            [DA COMPLETARE]
-          </p>
+        <div className="mt-8 overflow-hidden rounded-md bg-bianco-calce">
+          <iframe
+            title="Mappa della Dimora Checca"
+            src="https://maps.google.com/maps?q=39.614194,16.621500&z=16&output=embed"
+            className="h-80 w-full border-0 md:h-96"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            allowFullScreen
+          />
         </div>
         <p className="mt-3 text-sm text-grafite/70">
-          I link "Apri in Google Maps" e "Apri in Apple Maps" compariranno
-          qui non appena saranno note le coordinate. [DA COMPLETARE]
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=39.614194,16.621500"
+            target="_blank"
+            rel="noreferrer"
+            className="text-terracotta underline-offset-2 hover:underline"
+          >
+            Apri in Google Maps
+          </a>
+          <span className="mx-2 text-grafite/40">·</span>
+          <a
+            href="https://maps.apple.com/?ll=39.614194,16.621500&q=Dimora%20Checca"
+            target="_blank"
+            rel="noreferrer"
+            className="text-terracotta underline-offset-2 hover:underline"
+          >
+            Apri in Apple Maps
+          </a>
         </p>
 
         <div className="mt-16 grid grid-cols-1 gap-10 sm:grid-cols-3">

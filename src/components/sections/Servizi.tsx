@@ -27,11 +27,11 @@ const servizi: Servizio[] = [
   },
   {
     titolo: 'Wi-Fi',
-    descrizione: '[DA COMPLETARE]',
+    descrizione: 'Gratuito e attivo in tutte le camere.',
   },
   {
     titolo: 'Parcheggio',
-    descrizione: '[DA COMPLETARE]',
+    descrizione: 'Privato, riservato agli ospiti della struttura.',
   },
 ]
 
