@@ -56,7 +56,7 @@ export function Prenota() {
         <div className="mx-auto mt-10 grid max-w-2xl gap-6 text-left sm:grid-cols-3">
           {infoItems.map((item) => (
             <div key={item.label} className="border-t border-bianco-calce/30 pt-4">
-              <div className="mb-2 text-xs uppercase tracking-widest text-bianco-calce/60">
+              <div className="mb-2 text-xs uppercase tracking-widest text-bianco-calce/80">
                 {item.label}
               </div>
               {item.href ? (

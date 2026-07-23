@@ -128,7 +128,7 @@ export function Intro() {
                   <p className="font-display text-3xl text-terracotta md:text-4xl">
                     {stat.value}
                   </p>
-                  <p className="mt-1 text-xs font-medium uppercase tracking-[0.15em] text-grafite/60">
+                  <p className="mt-1 text-xs font-medium uppercase tracking-[0.15em] text-grafite/70">
                     {stat.label}
                   </p>
                 </div>

@@ -162,7 +162,7 @@ function RoomCard({ room }: { room: RoomCardData }) {
       className="group flex flex-col"
     >
       <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl bg-bianco-calce shadow-sm transition-shadow duration-300 group-hover:shadow-lg">
-        <span className="pointer-events-none absolute left-4 top-4 z-20 rounded-full bg-grafite/60 px-3 py-1.5 text-xs uppercase tracking-widest text-bianco-calce backdrop-blur-sm">
+        <span className="pointer-events-none absolute left-4 top-4 z-20 rounded-full bg-grafite/70 px-3 py-1.5 text-xs uppercase tracking-widest text-bianco-calce backdrop-blur-sm">
           {room.tipo}
         </span>
 

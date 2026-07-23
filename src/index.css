@@ -30,6 +30,21 @@ body {
   outline-offset: 2px;
 }
 
+/* Rifiniture tipografiche di sistema: i titoli display bilanciano le righe
+   (niente parole orfane in coda), il corpo del testo usa text-wrap: pretty per
+   evitare righe finali di una sola parola. Entrambe degradano senza effetti
+   sui browser che non le supportano. */
+h1,
+h2,
+h3,
+.font-display {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
 /* Galleria a marquee. Il track contiene DUE copie della sequenza e trasla di
    -50% (= una copia esatta: ogni copia porta un pr uguale al gap interno,
    quindi il punto di riavvolgimento è invisibile). La fila inversa riusa gli
@@ -47,6 +62,21 @@ body {
 
 .marquee-row {
   overflow-x: clip;
+  /* Sfuma i due bordi così il loop infinito sembra voluto e non tagliato di netto. */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 6%,
+    #000 94%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 6%,
+    #000 94%,
+    transparent
+  );
 }
 
 .marquee-track {
