@@ -1,24 +1,6 @@
 import { Nav } from '@/components/Nav'
 import { Footer } from '@/components/sections/Footer'
-
-function InfoBlock({
-  titolo,
-  righe,
-}: {
-  titolo: string
-  righe: string[]
-}) {
-  return (
-    <div>
-      <h3 className="font-display text-xl text-grafite">{titolo}</h3>
-      <ul className="mt-3 space-y-2 text-grafite/80">
-        {righe.map((riga) => (
-          <li key={riga}>{riga}</li>
-        ))}
-      </ul>
-    </div>
-  )
-}
+import { Directions } from '@/components/Directions'
 
 export function ComeRaggiungerci() {
   return (
@@ -68,20 +50,7 @@ export function ComeRaggiungerci() {
             </a>
           </p>
 
-          <div className="mt-16 grid grid-cols-1 gap-10 sm:grid-cols-3">
-            <InfoBlock
-              titolo="In auto"
-              righe={['[DA COMPLETARE]']}
-            />
-            <InfoBlock
-              titolo="In treno"
-              righe={['[DA COMPLETARE]']}
-            />
-            <InfoBlock
-              titolo="In aereo"
-              righe={['[DA COMPLETARE]']}
-            />
-          </div>
+          <Directions className="mt-14" />
 
           <div className="mt-16 border-t border-grafite/10 pt-8 text-center">
             <p className="text-grafite/80">Se ti perdi, chiamaci.</p>
