@@ -7,7 +7,7 @@ import { IMG_BASE } from '@/lib/utils'
 const WIDE_WIDTHS = [480, 800, 1280, 1600]
 const TALL_WIDTHS = [400, 600, 900, 1200]
 
-// Fila 1 (scorre verso sinistra): bb3, bb7, bb21, bb2, bb16
+// Fila 1 (scorre verso sinistra): spazi comuni + foto camere Brezza blu, Luna, Tramonto
 const fila1: LightboxImage[] = [
   {
     name: 'gallery-terrazza2',
@@ -44,9 +44,30 @@ const fila1: LightboxImage[] = [
     height: 1125,
     alt: 'Bagno con phon a muro',
   },
+  {
+    name: 'room-brezza-blu-1',
+    widths: TALL_WIDTHS,
+    width: 1200,
+    height: 1600,
+    alt: 'Camera Brezza blu con letto matrimoniale, copriletto azzurro e TV',
+  },
+  {
+    name: 'room-luna-1',
+    widths: TALL_WIDTHS,
+    width: 1200,
+    height: 1600,
+    alt: 'Camera Luna con letto matrimoniale e climatizzatore',
+  },
+  {
+    name: 'room-tramonto-3',
+    widths: TALL_WIDTHS,
+    width: 1200,
+    height: 900,
+    alt: 'Camera Tramonto con pianta di ulivo e disimpegno',
+  },
 ]
 
-// Fila 2 (scorre verso destra): bb5, bb4, bb12, bb17, bb9, bb10
+// Fila 2 (scorre verso destra): bagni + foto camere Brezza blu, Tramonto e le targhe
 const fila2: LightboxImage[] = [
   {
     name: 'gallery-vasca',
@@ -63,18 +84,25 @@ const fila2: LightboxImage[] = [
     alt: 'Bagno con piano in marmo verde e specchio tondo',
   },
   {
-    name: 'gallery-camera-verde',
+    name: 'room-brezza-blu-2',
     widths: TALL_WIDTHS,
-    width: 900,
-    height: 1125,
-    alt: 'Camera con copriletto verde e climatizzatore',
+    width: 1200,
+    height: 1600,
+    alt: 'Camera Brezza blu con testiera in legno intagliato e comodini',
   },
   {
-    name: 'gallery-camera-bordeaux',
+    name: 'room-tramonto-1',
     widths: TALL_WIDTHS,
-    width: 900,
-    height: 1125,
-    alt: 'Camera con copriletto bordeaux',
+    width: 1200,
+    height: 1600,
+    alt: 'Camera Tramonto con copriletto rosso, scrivania e TV',
+  },
+  {
+    name: 'room-tramonto-2',
+    widths: TALL_WIDTHS,
+    width: 1200,
+    height: 1600,
+    alt: 'Camera Tramonto con letto matrimoniale e climatizzatore',
   },
   {
     name: 'gallery-targa-sole',
