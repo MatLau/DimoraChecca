@@ -57,8 +57,12 @@ body {
   animation-direction: reverse;
 }
 
+/* Pausa su hover e sul focus DA TASTIERA. Si usa :has(:focus-visible) e non
+   :focus-within perché il click su una foto lascia il <button> a fuoco: con
+   :focus-within la riga resterebbe in pausa anche dopo che il mouse è uscito,
+   finché il focus non si sposta altrove. :focus-visible non scatta col mouse. */
 .marquee-row:hover .marquee-track,
-.marquee-row:focus-within .marquee-track {
+.marquee-row:has(:focus-visible) .marquee-track {
   animation-play-state: paused;
 }
 
