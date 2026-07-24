@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import { ArrowUp } from 'lucide-react'
 
 export function Footer() {
@@ -35,17 +36,25 @@ export function Footer() {
 
           <div className="flex flex-col items-center gap-4 text-center text-sm md:flex-row md:text-left">
             <div className="space-y-1">
-              <p>B&amp;B Dimora Checca — C/DA Frasso, 84, 87064 Corigliano Rossano (CS)</p>
               <p>
-                P.IVA [DA COMPLETARE] · CIN IT078157C2Y4E3QZRP · Privacy [DA
-                COMPLETARE]
+                Home Sharer Dimora Checca — C/DA Frasso, 84, 87064 Corigliano
+                Rossano (CS)
+              </p>
+              <p>
+                CIN IT078157C2Y4E3QZRP ·{' '}
+                <Link
+                  to="/privacy"
+                  className="underline-offset-2 transition-colors hover:text-ambra hover:underline"
+                >
+                  Privacy
+                </Link>
               </p>
             </div>
             <a
               href="https://www.facebook.com/profile.php?id=61591586182310"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Pagina Facebook di B&B Dimora Checca"
+              aria-label="Pagina Facebook di Dimora Checca"
               className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-bianco-calce/70 transition-colors hover:text-ambra"
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">

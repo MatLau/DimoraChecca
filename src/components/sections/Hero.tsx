@@ -16,7 +16,7 @@ export const Hero = forwardRef<HTMLDivElement>((_props, ref) => {
         sizes: '100vw',
         width: 2048,
         height: 1152,
-        alt: 'Terrazza del B&B Dimora Checca con vista su uliveto e montagne',
+        alt: 'Terrazza di Dimora Checca con vista su uliveto e montagne',
       }}
       eyebrow="Benvenuti"
       title={
