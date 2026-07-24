@@ -125,9 +125,11 @@ export function Privacy() {
                 mostrarli, il tuo browser comunica a Google il tuo indirizzo IP.
               </Term>
               <Term termine="Google Maps">
-                nella sezione &laquo;Come raggiungerci&raquo; è incorporata una
-                mappa. Caricando quella pagina, Google può ricevere il tuo
-                indirizzo IP e installare cookie propri.
+                nella sezione &laquo;Come raggiungerci&raquo; è disponibile una
+                mappa di Google, che <strong>non viene caricata
+                automaticamente</strong>. Solo se premi &laquo;Carica la
+                mappa&raquo; il tuo browser contatta Google, che può ricevere il
+                tuo indirizzo IP e installare cookie propri.
               </Term>
               <Term termine="Facebook">
                 nel footer trovi solo un collegamento alla nostra pagina: nessun
@@ -144,8 +146,10 @@ export function Privacy() {
           <Section titolo="Cookie">
             <p>
               Questo sito non installa cookie propri e non utilizza strumenti di
-              statistica o di profilazione. Possono essere installati cookie da
-              parte di Google quando viene caricata la mappa incorporata. Puoi
+              statistica o di profilazione. Cookie di Google possono essere
+              installati soltanto se scegli di caricare la mappa nella sezione
+              &laquo;Come raggiungerci&raquo;: finché non lo fai, nessun dato
+              viene inviato a Google per questo scopo. Puoi in ogni caso
               gestirli o bloccarli dalle impostazioni del tuo browser.
             </p>
           </Section>

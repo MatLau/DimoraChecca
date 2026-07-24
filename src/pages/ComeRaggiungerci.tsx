@@ -1,6 +1,7 @@
 import { Nav } from '@/components/Nav'
 import { Footer } from '@/components/sections/Footer'
 import { Directions } from '@/components/Directions'
+import { MapEmbed } from '@/components/MapEmbed'
 
 export function ComeRaggiungerci() {
   return (
@@ -20,35 +21,7 @@ export function ComeRaggiungerci() {
             C/DA Frasso, 84 — 87064 Corigliano Rossano (CS)
           </p>
 
-          <div className="mt-8 overflow-hidden rounded-md bg-bianco-calce">
-            <iframe
-              title="Mappa della Dimora Checca"
-              src="https://maps.google.com/maps?q=39.614194,16.621500&z=16&output=embed"
-              className="h-80 w-full border-0 md:h-96"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              allowFullScreen
-            />
-          </div>
-          <p className="mt-3 text-sm text-grafite/70">
-            <a
-              href="https://www.google.com/maps/search/?api=1&query=39.614194,16.621500"
-              target="_blank"
-              rel="noreferrer"
-              className="text-terracotta underline-offset-2 hover:underline"
-            >
-              Apri in Google Maps
-            </a>
-            <span className="mx-2 text-grafite/40">·</span>
-            <a
-              href="https://maps.apple.com/?ll=39.614194,16.621500&q=Dimora%20Checca"
-              target="_blank"
-              rel="noreferrer"
-              className="text-terracotta underline-offset-2 hover:underline"
-            >
-              Apri in Apple Maps
-            </a>
-          </p>
+          <MapEmbed className="mt-8" />
 
           <Directions className="mt-14" />
 
