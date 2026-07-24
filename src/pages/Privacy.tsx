@@ -120,10 +120,6 @@ export function Privacy() {
               <Term termine="GitHub Pages">
                 ospita il sito e tratta i dati di navigazione descritti sopra.
               </Term>
-              <Term termine="Google Fonts">
-                i caratteri tipografici sono caricati dai server di Google: per
-                mostrarli, il tuo browser comunica a Google il tuo indirizzo IP.
-              </Term>
               <Term termine="Google Maps">
                 nella sezione &laquo;Come raggiungerci&raquo; è disponibile una
                 mappa di Google, che <strong>non viene caricata
@@ -136,6 +132,10 @@ export function Privacy() {
                 dato viene trasmesso a Meta finché non lo apri.
               </Term>
             </ul>
+            <p>
+              I caratteri tipografici sono ospitati direttamente su questo sito:
+              non comportano quindi alcuna richiesta a fornitori esterni.
+            </p>
             <p>
               Alcuni di questi fornitori possono trasferire dati al di fuori
               dell&apos;Unione Europea, sulla base delle garanzie previste dal
