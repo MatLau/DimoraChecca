@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { useSectionMotion } from '@/lib/motion'
 import { IMG_BASE } from '@/lib/utils'
+import { MAILTO_PRENOTAZIONE } from '@/lib/contatti'
 
 const WIDTHS = [480, 800, 1280, 1600]
 const IMG_NAME = 'gallery-terrazza2'
@@ -74,7 +75,7 @@ export function Prenota() {
         </div>
 
         <a
-          href="tel:+393299855243"
+          href={MAILTO_PRENOTAZIONE}
           className="mt-12 inline-flex items-center rounded-full bg-bianco-calce px-10 py-4 text-sm uppercase tracking-widest text-grafite transition-colors hover:bg-ambra"
         >
           Prenota il tuo soggiorno

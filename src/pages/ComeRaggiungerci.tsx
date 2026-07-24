@@ -2,13 +2,14 @@ import { Nav } from '@/components/Nav'
 import { Footer } from '@/components/sections/Footer'
 import { Directions } from '@/components/Directions'
 import { MapEmbed } from '@/components/MapEmbed'
+import { ANCORA_PRENOTA } from '@/lib/contatti'
 
 export function ComeRaggiungerci() {
   return (
     <>
       <Nav
         navLinks={[{ label: 'Torna alla home', href: '/' }]}
-        cta={{ label: 'Prenota', href: 'tel:+393299855243' }}
+        cta={{ label: 'Prenota', href: ANCORA_PRENOTA }}
         scrolled
       />
 

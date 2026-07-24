@@ -1,8 +1,7 @@
 import type { ReactNode } from 'react'
 import { Nav } from '@/components/Nav'
 import { Footer } from '@/components/sections/Footer'
-
-const EMAIL = 'antoniogiuseppeurso79@gmail.com'
+import { ANCORA_PRENOTA, EMAIL } from '@/lib/contatti'
 
 function Section({ titolo, children }: { titolo: string; children: ReactNode }) {
   return (
@@ -31,7 +30,7 @@ export function Privacy() {
     <>
       <Nav
         navLinks={[{ label: 'Torna alla home', href: '/' }]}
-        cta={{ label: 'Prenota', href: 'tel:+393299855243' }}
+        cta={{ label: 'Prenota', href: ANCORA_PRENOTA }}
         scrolled
       />
 

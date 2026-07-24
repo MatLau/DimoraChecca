@@ -1,6 +1,7 @@
 import { forwardRef } from 'react'
 import { AnimatedHero } from '@/components/ui/animated-hero-section-1'
 import { IMG_BASE } from '@/lib/utils'
+import { MAILTO_PRENOTAZIONE } from '@/lib/contatti'
 
 const HERO_SRCSET = [640, 960, 1280, 1600, 1920, 2048]
   .map((w) => `${IMG_BASE}hero-${w}.webp ${w}w`)
@@ -28,7 +29,7 @@ export const Hero = forwardRef<HTMLDivElement>((_props, ref) => {
       description="Il luogo ideale per trascorrere una vacanza all'insegna del comfort, del relax e della tranquillità."
       ctaButton={{
         text: 'Prenota il tuo soggiorno',
-        href: 'tel:+393299855243',
+        href: MAILTO_PRENOTAZIONE,
       }}
       secondaryCta={{
         text: 'Scopri la Dimora',
