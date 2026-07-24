@@ -1,4 +1,5 @@
-import type { ComponentType } from 'react'
+import { useState, type ComponentType } from 'react'
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { Car, TrainFront, Plane, ChevronDown } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
@@ -8,6 +9,7 @@ interface DirectionItem {
 }
 
 interface DirectionGroup {
+  id: string
   title: string
   Icon: ComponentType<{ className?: string; 'aria-hidden'?: boolean | 'true' | 'false' }>
   items: DirectionItem[]
@@ -15,6 +17,7 @@ interface DirectionGroup {
 
 const groups: DirectionGroup[] = [
   {
+    id: 'auto',
     title: 'In auto',
     Icon: Car,
     items: [
@@ -33,6 +36,7 @@ const groups: DirectionGroup[] = [
     ],
   },
   {
+    id: 'treno',
     title: 'In treno',
     Icon: TrainFront,
     items: [
@@ -47,6 +51,7 @@ const groups: DirectionGroup[] = [
     ],
   },
   {
+    id: 'aereo',
     title: 'In aereo',
     Icon: Plane,
     items: [
@@ -66,49 +71,88 @@ const groups: DirectionGroup[] = [
   },
 ]
 
-function DirectionsGroup({
-  group,
-  defaultOpen,
-}: {
-  group: DirectionGroup
-  defaultOpen?: boolean
-}) {
-  const { Icon } = group
-  return (
-    <details
-      open={defaultOpen}
-      className="group border-t border-grafite/10 last:border-b"
-    >
-      <summary className="flex cursor-pointer list-none items-center gap-4 py-5 [&::-webkit-details-marker]:hidden">
-        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-terracotta/10 text-terracotta transition-colors group-hover:bg-terracotta/15">
-          <Icon className="h-5 w-5" aria-hidden="true" />
-        </span>
-        <h3 className="flex-1 font-display text-2xl text-grafite">
-          {group.title}
-        </h3>
-        <ChevronDown
-          className="h-5 w-5 shrink-0 text-grafite/50 duration-300 group-open:rotate-180 motion-safe:transition-transform"
-          aria-hidden="true"
-        />
-      </summary>
-      <ul className="space-y-5 pb-6 pl-15 pr-1">
-        {group.items.map((item) => (
-          <li key={item.lead}>
-            <p className="font-semibold text-grafite">{item.lead}</p>
-            <p className="mt-1 leading-relaxed text-grafite/70">{item.text}</p>
-          </li>
-        ))}
-      </ul>
-    </details>
-  )
-}
+const PANEL_ID = 'indicazioni-panel'
 
 export function Directions({ className }: { className?: string }) {
+  const [activeId, setActiveId] = useState<string | null>(null)
+  const reduce = useReducedMotion()
+  const active = groups.find((g) => g.id === activeId) ?? null
+
   return (
     <div className={cn(className)}>
-      {groups.map((group, i) => (
-        <DirectionsGroup key={group.title} group={group} defaultOpen={i === 0} />
-      ))}
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+        {groups.map((group) => {
+          const isActive = group.id === activeId
+          const { Icon } = group
+          return (
+            <button
+              key={group.id}
+              type="button"
+              onClick={() => setActiveId(isActive ? null : group.id)}
+              aria-expanded={isActive}
+              aria-controls={PANEL_ID}
+              className={cn(
+                'flex cursor-pointer flex-col items-center gap-3 rounded-2xl border p-6 text-center transition-colors duration-200',
+                isActive
+                  ? 'border-terracotta bg-terracotta/5'
+                  : 'border-grafite/15 hover:border-terracotta/40 hover:bg-terracotta/5',
+              )}
+            >
+              <span
+                className={cn(
+                  'flex h-14 w-14 items-center justify-center rounded-full transition-colors duration-200',
+                  isActive
+                    ? 'bg-terracotta text-bianco-calce'
+                    : 'bg-terracotta/10 text-terracotta',
+                )}
+              >
+                <Icon className="h-6 w-6" aria-hidden="true" />
+              </span>
+              <span className="font-display text-2xl text-grafite">
+                {group.title}
+              </span>
+              <span className="flex items-center gap-1.5 text-xs uppercase tracking-widest text-grafite/70">
+                {isActive ? 'Nascondi' : 'Vedi le indicazioni'}
+                <ChevronDown
+                  className={cn(
+                    'h-3.5 w-3.5 duration-300 motion-safe:transition-transform',
+                    isActive && 'rotate-180',
+                  )}
+                  aria-hidden="true"
+                />
+              </span>
+            </button>
+          )
+        })}
+      </div>
+
+      <div id={PANEL_ID}>
+        <AnimatePresence mode="wait" initial={false}>
+          {active && (
+            <motion.div
+              key={active.id}
+              role="region"
+              aria-label={`Indicazioni ${active.title.toLowerCase()}`}
+              initial={reduce ? { opacity: 1 } : { opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={reduce ? { opacity: 0 } : { opacity: 0, y: -4 }}
+              transition={{ duration: reduce ? 0 : 0.25, ease: 'easeOut' }}
+              className="mt-8 border-t border-grafite/10 pt-8"
+            >
+              <ul className="space-y-5">
+                {active.items.map((item) => (
+                  <li key={item.lead}>
+                    <p className="font-semibold text-grafite">{item.lead}</p>
+                    <p className="mt-1 leading-relaxed text-grafite/70">
+                      {item.text}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </div>
   )
 }
